@@ -1,0 +1,29 @@
+{% extends 'item/layout.html' %}
+{% block content %}
+{#    {% load humanize %}#}
+    <h1>Item Detail</h1>
+    {% if item.image %}
+    <img src="{{ item.image.url }}" style="max-width: 30%;" />
+    {% endif %}
+    <br/>
+    <b>{{ item.title }}</b>
+    <br/>
+    가격 : {{ item.price }}
+    <br/>
+    남은 수량 : {{ item.amount }}
+    <br/><br/>
+    제품 설명 :
+    <br/><br/>
+    {{ item.title }} 설명입니다.
+    <br/>
+    {{ item.content }}
+    <br/><br/>
+    <b>거래처 :</b> {{ item.account }}
+    <hr/>
+{#    삭제, 목록, 수정#}
+    <a href="{% url 'item:item_delete' item.pk %}">삭제</a>
+    <a href="/item/">목록</a>
+    <a href="{% url 'item:item_update' item.pk %}">수정</a>
+
+{% endblock %}
+

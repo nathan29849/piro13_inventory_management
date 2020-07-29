@@ -1,0 +1,17 @@
+{% extends 'item/layout.html' %}
+
+{% block content %}
+<h1>Account List</h1>
+    <p>거래처 목록 페이지 입니다. 거래처를 자세히 보려면 거래처 블록을 클릭하세요.</p>
+
+{% for account in account_list %}
+    <a href="{% url 'item:account_detail' account.pk %}"><h2>{{ account.name }}</h2></a>
+{#    app name : name space#}
+    <img src="">
+    <br/>
+    {{ account.call }}
+    <br/>
+    {{ account.address }}
+    <br/>
+{% endfor %}
+{% endblock %}

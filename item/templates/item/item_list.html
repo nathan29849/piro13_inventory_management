@@ -1,0 +1,20 @@
+{% extends 'item/layout.html' %}
+
+{% block content %}
+<h1>Item List</h1>
+    <p>해당 상품의 설명을 보려면 이미지를 클릭해 주세요.</p>
+
+{% for item in item_list %}
+    <span>
+    <a href="{% url 'item:item_detail' item.pk %}">{{ item.title }}</a>
+    {% if item.image %}
+        <img src="{{ item.image.url }}" style="max-width: 30%;" / >
+    {% endif %}
+
+    <br/>
+    가격 : {{ item.price }}
+    <br/>
+    남은 수량 : {{ item.amount }}
+    <br/>
+{% endfor %}</span>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'item/layout.html' %}
+{% block content %}
+{#    {% load humanize %}#}
+    <h1>Account Detail</h1>
+    <b>{{ account.name }}</b>
+    <br/>
+    {{ account.call }}
+    <br/>
+    {{ account.address }}    <br/>
+    <b>거래 상품 목록</b>
+    <br/>
+    {% for item in account.item_set.all %}
+    {{ item.title }}
+    {% endfor %}
+    <br/><br/>
+    <hr/>
+{#    삭제, 목록, 수정#}
+    <a href="{% url 'item:account_delete' account.pk %}?next={{ request.path }}">삭제</a>
+    <a href="/account/">목록</a>
+    <a href="{% url 'item:account_update' account.pk %}?next={{ request.path }}">수정</a>
+
+{% endblock %}
+
